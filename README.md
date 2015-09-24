@@ -25,6 +25,55 @@ Incorporated Tests:
     end
 
 
+# add minitest reporters and use it to add green and red to our tests
+require "minitest/reporters"
+Minitest::Reporters.use!
+
+
+# adding a backtrace silencer to remove unnecessary code in errors.
+Rails.backtrace_cleaner.add_silencer { |line| line =~ /rvm/ }
+
+# add guard to automate running of tests.
+$ bundle exec guard init
+
+guard :minitest, spring: true, all_on_start: false do
+  guard uses Spring server to speed up loading times. and prevents guard from running full tests on start
+
+add to guard to git ignore file
+# Ignore Spring files.
+/spring/*.pid
+
+
+#add helper method for title.. so that blank titles have def value..
+  module ApplicationHelper
+
+  # Returns the full title on a per-page basis.
+  def full_title(page_title = '')
+    base_title = "Ruby on Rails Tutorial Sample App"
+    if page_title.empty?
+      base_title
+    else
+      page_title + " | " + base_title
+    end
+  end
+end
+
+--then add the helper method to the application page..
+<title><%= full_title(yield(:title)) %> </title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 This is the sample application for the
