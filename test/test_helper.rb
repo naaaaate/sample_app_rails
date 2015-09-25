@@ -1,4 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 # add minitest reporters and use it to add green and red to our tests
